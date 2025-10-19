@@ -1,0 +1,595 @@
+.relatorios-container {
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.relatorios-header {
+  text-align: center;
+  margin-bottom: 40px;
+  padding-bottom: 20px;
+  border-bottom: 2px solid #e9ecef;
+}
+
+.relatorios-header h2 {
+  margin: 0 0 10px 0;
+  color: #333;
+  font-size: 32px;
+  font-weight: 700;
+}
+
+.relatorios-header p {
+  margin: 0;
+  color: #6c757d;
+  font-size: 18px;
+}
+
+/* Abas de navegação */
+.relatorios-tabs {
+  display: flex;
+  margin-bottom: 30px;
+  border-bottom: 2px solid #e9ecef;
+  gap: 5px;
+}
+
+.tab-button {
+  background: none;
+  border: none;
+  padding: 15px 25px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 500;
+  color: #6c757d;
+  border-bottom: 3px solid transparent;
+  transition: all 0.3s ease;
+  border-radius: 8px 8px 0 0;
+}
+
+.tab-button:hover {
+  color: #495057;
+  background: #f8f9fa;
+}
+
+.tab-button.active {
+  color: #007bff;
+  border-bottom-color: #007bff;
+  background: #fff;
+  font-weight: 600;
+}
+
+/* Próxima Aula em Destaque */
+.proxima-aula-destaque {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 16px;
+  padding: 30px;
+  margin-bottom: 40px;
+  color: white;
+  box-shadow: 0 8px 32px rgba(102, 126, 234, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.proxima-aula-destaque::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -50%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, rgba(255,255,255,0.1), transparent);
+  border-radius: 50%;
+  animation: shimmer 3s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+  0%, 100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+  50% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+}
+
+.destaque-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+  position: relative;
+  z-index: 2;
+}
+
+.destaque-header h3 {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.contador-principal {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: rgba(255, 255, 255, 0.2);
+  padding: 12px 20px;
+  border-radius: 25px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.contador-principal.hoje {
+  background: linear-gradient(135deg, #ff4757, #ff3838);
+  animation: pulse 2s infinite;
+}
+
+.contador-principal.amanha {
+  background: linear-gradient(135deg, #ffa726, #ff9800);
+}
+
+.contador-principal.proxima {
+  background: linear-gradient(135deg, #42a5f5, #2196f3);
+}
+
+.contador-principal.distante {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+.icone-status {
+  font-size: 20px;
+}
+
+.texto-contador {
+  font-weight: 700;
+  font-size: 16px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.destaque-content {
+  position: relative;
+  z-index: 2;
+}
+
+.disciplina-badge {
+  display: inline-block;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  color: white;
+  font-size: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.aula-info-principal {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 20px;
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.data-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.data-completa {
+  font-size: 18px;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+.horario-info {
+  background: rgba(255, 255, 255, 0.2);
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.observacoes-destaque {
+  margin-top: 15px;
+  padding-top: 15px;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.observacoes-destaque strong {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 14px;
+  opacity: 0.9;
+}
+
+.observacoes-destaque p {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+/* Próximas Aulas */
+.proximas-aulas-secao {
+  margin-bottom: 40px;
+}
+
+.proximas-aulas-secao h3 {
+  color: #333;
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 25px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #e9ecef;
+}
+
+/* Empty State */
+.empty-state {
+  text-align: center;
+  padding: 60px 20px;
+  background: #f8f9fa;
+  border-radius: 12px;
+  border: 2px dashed #dee2e6;
+}
+
+.empty-icon {
+  font-size: 48px;
+  margin-bottom: 20px;
+}
+
+.empty-state h4 {
+  color: #333;
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.empty-state p {
+  color: #6c757d;
+  font-size: 16px;
+  margin: 0;
+}
+
+/* Timeline */
+.aulas-timeline {
+  position: relative;
+}
+
+.aulas-timeline::before {
+  content: '';
+  position: absolute;
+  left: 20px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(to bottom, #007bff, #e9ecef);
+}
+
+.timeline-item {
+  position: relative;
+  margin-bottom: 25px;
+  padding-left: 60px;
+  transition: all 0.3s ease;
+}
+
+.timeline-item:hover {
+  transform: translateX(5px);
+}
+
+.timeline-item.destaque {
+  background: linear-gradient(135deg, rgba(0, 123, 255, 0.1), rgba(0, 123, 255, 0.05));
+  padding: 20px 20px 20px 60px;
+  margin-left: -20px;
+  border-radius: 12px;
+  border-left: 4px solid #007bff;
+}
+
+.timeline-marker {
+  position: absolute;
+  left: -20px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  z-index: 2;
+}
+
+.timeline-item.hoje .timeline-marker {
+  background: linear-gradient(135deg, #ff4757, #ff3838);
+  animation: pulse 2s infinite;
+}
+
+.timeline-item.amanha .timeline-marker {
+  background: linear-gradient(135deg, #ffa726, #ff9800);
+}
+
+.timeline-item.proxima .timeline-marker {
+  background: linear-gradient(135deg, #42a5f5, #2196f3);
+}
+
+.timeline-item.distante .timeline-marker {
+  background: linear-gradient(135deg, #78909c, #607d8b);
+}
+
+/* Estilos para aulas concluídas */
+.timeline-item.concluida {
+  opacity: 0.85;
+}
+
+.timeline-item.concluida .timeline-marker {
+  background: linear-gradient(135deg, #28a745, #20c997);
+}
+
+.timeline-item.concluida .timeline-content {
+  border-left: 4px solid #28a745;
+  background: linear-gradient(135deg, #f8fff9, #ffffff);
+}
+
+.timeline-icone.concluida {
+  color: white;
+  font-weight: bold;
+}
+
+.contador-dias.concluida {
+  background: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+}
+
+.timeline-icone {
+  font-size: 18px;
+}
+
+.timeline-content {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e9ecef;
+  transition: all 0.3s ease;
+}
+
+.timeline-item:hover .timeline-content {
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.timeline-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.disciplina-nome {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.contador-dias {
+  padding: 6px 12px;
+  border-radius: 15px;
+  font-weight: 600;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.contador-dias.hoje {
+  background: #ff4757;
+  color: white;
+}
+
+.contador-dias.amanha {
+  background: #ffa726;
+  color: white;
+}
+
+.contador-dias.proxima {
+  background: #42a5f5;
+  color: white;
+}
+
+.contador-dias.distante {
+  background: #e9ecef;
+  color: #6c757d;
+}
+
+.timeline-details {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.data-horario {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+.data {
+  color: #333;
+  font-weight: 500;
+}
+
+.horario {
+  background: #f8f9fa;
+  padding: 4px 8px;
+  border-radius: 8px;
+  font-size: 14px;
+  color: #6c757d;
+}
+
+.observacoes-timeline {
+  flex: 1;
+  text-align: right;
+  color: #6c757d;
+  font-size: 14px;
+  font-style: italic;
+}
+
+/* Estatísticas */
+.estatisticas-resumo h3 {
+  color: #333;
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 25px;
+  text-align: center;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+.stat-card {
+  background: white;
+  padding: 25px;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e9ecef;
+  transition: all 0.3s ease;
+}
+
+.stat-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.stat-card:nth-child(1) {
+  border-top: 4px solid #007bff;
+}
+
+.stat-card:nth-child(2) {
+  border-top: 4px solid #28a745;
+}
+
+.stat-card:nth-child(3) {
+  border-top: 4px solid #ffc107;
+}
+
+.stat-card:nth-child(4) {
+  border-top: 4px solid #dc3545;
+}
+
+.stat-numero {
+  font-size: 36px;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.stat-label {
+  color: #6c757d;
+  font-size: 14px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .relatorios-container {
+    padding: 15px;
+  }
+
+  .relatorios-header h2 {
+    font-size: 28px;
+  }
+
+  .proxima-aula-destaque {
+    padding: 20px;
+  }
+
+  .destaque-header {
+    flex-direction: column;
+    gap: 15px;
+    align-items: stretch;
+  }
+
+  .contador-principal {
+    justify-content: center;
+  }
+
+  .data-info {
+    flex-direction: column;
+    gap: 10px;
+    align-items: flex-start;
+  }
+
+  .timeline-item {
+    padding-left: 50px;
+  }
+
+  .timeline-item.destaque {
+    margin-left: -15px;
+    padding-left: 50px;
+  }
+
+  .timeline-header {
+    flex-direction: column;
+    gap: 10px;
+    align-items: flex-start;
+  }
+
+  .timeline-details {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .observacoes-timeline {
+    text-align: left;
+  }
+
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+  }
+
+  .relatorios-tabs {
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .tab-button {
+    border-radius: 0;
+    border-bottom: 1px solid #e9ecef;
+    text-align: left;
+  }
+
+  .tab-button.active {
+    border-left: 4px solid #007bff;
+    border-bottom: 1px solid #e9ecef;
+  }
+}
+
+@media (max-width: 480px) {
+  .proxima-aula-destaque {
+    padding: 15px;
+  }
+
+  .timeline-marker {
+    width: 32px;
+    height: 32px;
+    left: -16px;
+  }
+
+  .timeline-icone {
+    font-size: 14px;
+  }
+
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .stat-numero {
+    font-size: 28px;
+  }
+}

@@ -1,0 +1,682 @@
+/* Container principal da agenda com CRUD */
+.agenda-crud-container {
+  padding: 20px;
+  background: #f8f9fa;
+  min-height: 100vh;
+}
+
+/* Cabeçalho da agenda */
+.agenda-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 25px;
+  gap: 20px;
+}
+
+.agenda-titulo h2 {
+  margin: 0 0 8px 0;
+  color: #2c3e50;
+  font-size: 28px;
+  font-weight: 700;
+}
+
+.agenda-titulo p {
+  margin: 0;
+  color: #6c757d;
+  font-size: 16px;
+}
+
+/* Botão de nova aula rápida */
+.btn-nova-aula-rapido {
+  background: linear-gradient(135deg, #2d2d2d 0%, #1a1a1a 100%);
+  color: white;
+  border: 1px solid #404040;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer !important;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  white-space: nowrap;
+  pointer-events: auto !important;
+}
+
+.btn-nova-aula-rapido:hover:not(:disabled) {
+  background: linear-gradient(135deg, #404040 0%, #2d2d2d 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  cursor: pointer !important;
+}
+
+.btn-nova-aula-rapido:disabled {
+  opacity: 0.5;
+  cursor: not-allowed !important;
+  transform: none;
+  background: #6c757d !important;
+  box-shadow: none;
+  pointer-events: none;
+}
+
+/* Container do calendário */
+.calendario-container {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  border: 1px solid #e9ecef;
+}
+
+/* Cabeçalho do calendário */
+.calendario-header {
+  padding: 20px 25px;
+  background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+  border-bottom: 1px solid #dee2e6;
+}
+
+.calendario-navegacao {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.btn-nav {
+  background: #3d3d3d;
+  color: #e5e7eb;
+  border: 1px solid #555555;
+  width: 35px;
+  height: 35px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-nav:hover {
+  background: #4a4a4a;
+  border-color: #666666;
+}
+
+.mes-ano h3 {
+  margin: 0;
+  color: #2c3e50;
+  font-size: 18px;
+  font-weight: 600;
+  min-width: 180px;
+  text-align: center;
+}
+
+.btn-hoje {
+  background: #3d3d3d;
+  color: #e5e7eb;
+  border: 1px solid #555555;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.btn-hoje:hover {
+  background: #4a4a4a;
+  color: white;
+}
+
+/* Grid do calendário */
+.calendario-grid {
+  background: white;
+}
+
+.calendario-cabecalho {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  background: #f8f9fa;
+  border-bottom: 1px solid #e9ecef;
+}
+
+.dia-semana {
+  padding: 12px 8px;
+  text-align: center;
+  font-weight: 600;
+  color: #495057;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.calendario-dias {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 1px;
+  background: #e9ecef;
+}
+
+.dia-vazio {
+  background: #f8f9fa;
+  min-height: 100px;
+}
+
+.dia {
+  background: white;
+  min-height: 100px;
+  padding: 8px;
+  position: relative;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: 2px solid transparent;
+}
+
+.dia:hover {
+  background: #f8f9fa;
+}
+
+.dia.dia-hoje {
+  background: #e3f2fd !important;
+  border-color: #2196f3;
+}
+
+.dia.dia-com-aulas {
+  background: #f8fff4;
+}
+
+.numero-dia {
+  font-weight: 600;
+  color: #2c3e50;
+  font-size: 14px;
+  display: block;
+  margin-bottom: 4px;
+}
+
+.dia.dia-hoje .numero-dia {
+  color: #2196f3;
+}
+
+.aulas-dia {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.aula-item {
+  background: #2196f3;
+  color: white;
+  padding: 2px 6px;
+  border-radius: 3px;
+  font-size: 10px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  position: relative;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.aula-item:hover {
+  opacity: 0.8;
+  transform: scale(1.02);
+}
+
+.aula-item.aula-concluida {
+  opacity: 0.7;
+  position: relative;
+}
+
+.check-concluida-calendario {
+  position: absolute;
+  top: 1px;
+  right: 2px;
+  font-size: 8px;
+  color: #28a745;
+  background: white;
+  border-radius: 50%;
+  width: 12px;
+  height: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+}
+
+.aula-nome {
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.aula-horario {
+  font-size: 9px;
+  opacity: 0.9;
+  line-height: 1;
+}
+
+/* Resumo do mês */
+.calendario-resumo {
+  padding: 20px 25px;
+  background: #f8f9fa;
+  border-top: 1px solid #e9ecef;
+}
+
+.calendario-resumo h4 {
+  margin: 0 0 15px 0;
+  color: #495057;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.resumo-disciplinas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.resumo-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: #495057;
+}
+
+.resumo-cor {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* Modal da aula com CRUD */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 20px;
+}
+
+.modal-aula-crud,
+.modal-form-rapido {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  max-width: 500px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 25px;
+  border-bottom: 1px solid #e9ecef;
+  background: #f8f9fa;
+}
+
+.modal-header h3 {
+  margin: 0;
+  color: #2c3e50;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.btn-fechar-modal {
+  background: none;
+  border: none;
+  font-size: 18px;
+  color: #6c757d;
+  cursor: pointer;
+  width: 28px;
+  height: 28px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.btn-fechar-modal:hover {
+  background: #4a4a4a;
+  color: #ffffff;
+}
+
+.modal-content {
+  padding: 20px 25px;
+}
+
+.disciplina-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 16px;
+  border-radius: 6px;
+  margin-bottom: 16px;
+  background: #f8f9fa;
+  border-left: 4px solid;
+}
+
+.aula-indicador {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.disciplina-info h4 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+  color: #2c3e50;
+}
+
+.aula-detalhes {
+  margin-bottom: 20px;
+}
+
+.detalhe-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 8px 0;
+  border-bottom: 1px solid #f1f3f4;
+}
+
+.detalhe-item:last-child {
+  border-bottom: none;
+}
+
+.detalhe-item strong {
+  color: #495057;
+  font-weight: 600;
+  min-width: 80px;
+}
+
+.detalhe-item span {
+  color: #6c757d;
+  text-align: right;
+}
+
+.detalhe-item.observacoes {
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.detalhe-item.observacoes p {
+  margin: 8px 0 0 0;
+  color: #6c757d;
+  line-height: 1.5;
+  width: 100%;
+}
+
+/* Ações do modal CRUD */
+.modal-acoes {
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+  padding-top: 15px;
+  border-top: 1px solid #e9ecef;
+}
+
+.btn-editar-aula,
+.btn-excluir-aula {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.btn-editar-aula {
+  background: linear-gradient(135deg, #2d2d2d 0%, #1a1a1a 100%);
+  color: white;
+  border: 1px solid #404040;
+}
+
+.btn-editar-aula:hover:not(:disabled) {
+  background: linear-gradient(135deg, #404040 0%, #2d2d2d 100%);
+}
+
+.btn-excluir-aula {
+  background: #dc3545;
+  color: white;
+}
+
+.btn-excluir-aula:hover:not(:disabled) {
+  background: #c82333;
+}
+
+.btn-editar-aula:disabled,
+.btn-excluir-aula:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Formulário rápido */
+.form-rapido {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.campo-grupo {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.campo-grupo label {
+  font-weight: 600;
+  color: #495057;
+  font-size: 14px;
+}
+
+.campo-grupo input,
+.campo-grupo select,
+.campo-grupo textarea {
+  padding: 10px 12px;
+  border: 1px solid #dee2e6;
+  border-radius: 6px;
+  font-size: 14px;
+  transition: border-color 0.2s ease;
+  background: white;
+}
+
+.campo-grupo input:focus,
+.campo-grupo select:focus,
+.campo-grupo textarea:focus {
+  outline: none;
+  border-color: #555555;
+  box-shadow: 0 0 0 3px rgba(85, 85, 85, 0.1);
+}
+
+.campo-grupo .input-error {
+  border-color: #dc3545;
+  box-shadow: 0 0 0 3px rgba(220, 53, 69, 0.1);
+}
+
+.field-error {
+  color: #dc3545;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.campo-grupo textarea {
+  resize: vertical;
+  min-height: 60px;
+}
+
+/* Ações do formulário */
+.form-acoes {
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+  margin-top: 20px;
+  padding-top: 15px;
+  border-top: 1px solid #e9ecef;
+}
+
+.btn-cancelar,
+.btn-salvar {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-width: 100px;
+}
+
+.btn-cancelar {
+  background: #3d3d3d;
+  color: #e5e7eb;
+  border: 1px solid #555555;
+}
+
+.btn-cancelar:hover:not(:disabled) {
+  background: #4a4a4a;
+  color: #ffffff;
+}
+
+.btn-salvar {
+  background: linear-gradient(135deg, #2d2d2d 0%, #1a1a1a 100%);
+  color: white;
+  border: 1px solid #404040;
+}
+
+.btn-salvar:hover:not(:disabled) {
+  background: linear-gradient(135deg, #404040 0%, #2d2d2d 100%);
+}
+
+.btn-cancelar:disabled,
+.btn-salvar:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .agenda-crud-container {
+    padding: 15px;
+  }
+
+  .agenda-header {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 15px;
+  }
+
+  .btn-nova-aula-rapido {
+    width: 100%;
+    text-align: center;
+  }
+
+  .calendario-navegacao {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .mes-ano h3 {
+    min-width: auto;
+    order: -1;
+    width: 100%;
+  }
+
+  .calendario-dias {
+    gap: 0;
+  }
+
+  .dia {
+    min-height: 80px;
+    padding: 4px;
+  }
+
+  .aula-item {
+    font-size: 9px;
+    padding: 1px 4px;
+  }
+
+  .aula-horario {
+    font-size: 8px;
+  }
+
+  .modal-aula-crud,
+  .modal-form-rapido {
+    margin: 10px;
+    width: calc(100% - 20px);
+  }
+
+  .modal-header,
+  .modal-content {
+    padding: 15px 20px;
+  }
+
+  .modal-acoes,
+  .form-acoes {
+    flex-direction: column;
+  }
+
+  .btn-editar-aula,
+  .btn-excluir-aula,
+  .btn-cancelar,
+  .btn-salvar {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .resumo-disciplinas {
+    flex-direction: column;
+    gap: 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  .agenda-crud-container {
+    padding: 10px;
+  }
+
+  .dia {
+    min-height: 60px;
+    padding: 2px;
+  }
+
+  .numero-dia {
+    font-size: 12px;
+  }
+
+  .aula-item {
+    font-size: 8px;
+    padding: 1px 2px;
+  }
+
+  .check-concluida-calendario {
+    width: 10px;
+    height: 10px;
+    font-size: 7px;
+  }
+
+  .modal-header h3 {
+    font-size: 18px;
+  }
+
+  .disciplina-info h4 {
+    font-size: 14px;
+  }
+}

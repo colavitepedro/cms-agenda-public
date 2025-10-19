@@ -1,0 +1,232 @@
+/* ===== WEB RESPONSIVE OPTIMIZATIONS ===== */
+
+/* Better interaction on smaller screens */
+@media (max-width: 768px) {
+  /* Ensure all interactive elements are appropriately sized */
+  button, .btn, input, select, textarea, a {
+    min-height: 44px;
+  }
+  
+  /* Better spacing for mobile web */
+  .card {
+    margin-bottom: 1rem;
+  }
+  
+  .form-field {
+    margin-bottom: 1.25rem;
+  }
+  
+  /* Stack buttons vertically on mobile */
+  .form-actions {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  
+  .form-actions .btn {
+    width: 100%;
+    justify-content: center;
+  }
+  
+  /* Better modal/form styling */
+  .modal, .form-container {
+    margin: 0.5rem;
+    border-radius: 1rem;
+  }
+  
+  /* Improve table responsiveness */
+  .table-container {
+    border-radius: 0.5rem;
+    margin: 0 -0.5rem;
+  }
+  
+  .table {
+    font-size: 14px;
+  }
+  
+  .table th,
+  .table td {
+    padding: 0.75rem 0.5rem;
+    white-space: nowrap;
+  }
+  
+  /* Better grid layouts */
+  .grid-2 {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  .grid-3 {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  .grid-4 {
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+  }
+  
+  /* Typography adjustments */
+  h1 { font-size: 1.75rem; }
+  h2 { font-size: 1.5rem; }
+  h3 { font-size: 1.25rem; }
+  h4 { font-size: 1.125rem; }
+  
+  /* Better spacing */
+  .section { padding: 1rem 0; }
+  .container { padding: 0 1rem; }
+  
+  /* Improve form layouts */
+  .form-row {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  /* Better card layouts */
+  .card-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  /* Improve navigation */
+  .nav-horizontal {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .nav-horizontal .nav-item {
+    width: 100%;
+    text-align: center;
+    padding: 0.75rem;
+  }
+}
+
+/* Extra small devices */
+@media (max-width: 480px) {
+  /* Reduce padding and margins */
+  .container { padding: 0 0.75rem; }
+  .card { margin: 0.25rem 0; }
+  
+  /* Smaller buttons for very small screens */
+  .btn-sm {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.875rem;
+    min-height: 40px;
+  }
+  
+  /* Better form styling */
+  .form-container {
+    padding: 1rem;
+    margin: 0.25rem;
+  }
+  
+  /* Compact grids */
+  .grid-4 {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+  }
+  
+  /* Typography for very small screens */
+  h1 { font-size: 1.5rem; }
+  h2 { font-size: 1.375rem; }
+  h3 { font-size: 1.125rem; }
+  
+  /* Reduce spacing */
+  .section { padding: 0.75rem 0; }
+}
+
+/* ===== LOADING STATES ===== */
+
+.loading-spinner {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 2px solid #f3f3f3;
+  border-top: 2px solid #667eea;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+.loading-spinner.large {
+  width: 40px;
+  height: 40px;
+  border-width: 4px;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* ===== ACCESSIBILITY ===== */
+
+/* Better focus indicators */
+@media (max-width: 768px) {
+  *:focus {
+    outline: 3px solid #667eea;
+    outline-offset: 2px;
+  }
+  
+  /* Ensure text is readable */
+  body {
+    font-size: 16px;
+    line-height: 1.5;
+  }
+  
+  /* Better contrast */
+  .text-muted {
+    color: #495057;
+  }
+}
+
+/* ===== UTILITY CLASSES ===== */
+
+/* Mobile-specific utilities */
+@media (max-width: 768px) {
+  .mobile-full-width {
+    width: 100% !important;
+  }
+  
+  .mobile-text-center {
+    text-align: center !important;
+  }
+  
+  .mobile-hidden {
+    display: none !important;
+  }
+  
+  .mobile-only {
+    display: block !important;
+  }
+  
+  .mobile-stack {
+    flex-direction: column !important;
+    gap: 1rem !important;
+  }
+  
+  .mobile-no-margin {
+    margin: 0 !important;
+  }
+  
+  .mobile-no-padding {
+    padding: 0 !important;
+  }
+  
+  .mobile-padding {
+    padding: 1rem !important;
+  }
+  
+  .mobile-margin {
+    margin: 1rem !important;
+  }
+}
+
+/* Desktop-only utilities */
+@media (min-width: 769px) {
+  .desktop-only {
+    display: block !important;
+  }
+  
+  .mobile-only {
+    display: none !important;
+  }
+}
